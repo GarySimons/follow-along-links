@@ -35,7 +35,9 @@
 
     // Highlight function
     function highlightLink() {
-        console.log("Highlight");
+        // Find out how big, wide and where on the page links 'this' are 
+        const linkCords = this.getBoundingClientRect();
+        console.log(linkCords);
     }
 
     // Trigger highlightLink function on moving mouse over
