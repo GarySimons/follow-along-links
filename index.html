@@ -36,8 +36,22 @@
     // Highlight function
     function highlightLink() {
         // Find out how big, wide and where on the page links 'this' are 
-        const linkCords = this.getBoundingClientRect();
-        console.log(linkCords);
+        const linkCoords = this.getBoundingClientRect();
+        console.log(linkCoords);
+        // create variable for when page scrolls down and coordinates change
+        const coords = {
+            width: linkCoords.width,
+            height: linkCoords.height,
+            top: linkCoords.top + window.scrollY,
+            left: linkCoords.left + window.scrollX
+        };
+
+        // take the highlight and add the width & height of the element found in LinkCoords
+        highlight.style.width = `${coords.width}px`;
+        highlight.style.height = `${coords.height}px`;
+        // Using transform to animate links using LinkCoords info
+        highlight.style.transform = `translate(${coords.left}px, ${coords.top}px)`;
+
     }
 
     // Trigger highlightLink function on moving mouse over
